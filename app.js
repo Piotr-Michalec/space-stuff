@@ -1,5 +1,6 @@
 const express = require('express')
 const marsRouter = require('./routes/mars')
+const testRouter = require('./routes/test')
 
 const app = express()
 const port = 8080
@@ -43,15 +44,9 @@ app.get('/' ,async (req,res)=>{
    let nasaData = await FetchDataFromApi(NASA_APOD)
     res.render('index', {nasaData: nasaData})
 }) 
- 
-
-/* app.get('/',(req,res)=>{
-    res.send('test')
-})
- */
-
 
 app.use('/mars', marsRouter)
+app.use('/test', testRouter)
 
 app.listen(port,()=>{
     console.log(`listening on ${port}`)
