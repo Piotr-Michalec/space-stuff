@@ -25,13 +25,13 @@ const FetchDataFromApi = async (url, rover) =>{
 
 
 //fetch data
-router.get('/' , async (req,res)=>{
+router.get('/opportunity' , async (req,res)=>{
     //change variable names
     //call FetchDataFromAPi here and pass url as an argument
     const roverName = 'opportunity'
     let url = await urlBuilder(roverName)
     let marsData = await FetchDataFromApi(url)
-    res.render('mars', {marsData:marsData})
+    res.send({marsData:marsData})
 }) 
  
 router.get('/spirit' , async (req,res)=>{
@@ -40,8 +40,7 @@ router.get('/spirit' , async (req,res)=>{
     const roverName = 'spirit'
     let url = await urlBuilder(roverName)
     let marsData = await FetchDataFromApi(url)
-    console.log(req)
-    res.render('mars', {marsData:marsData})
+    res.send({marsData:marsData})
 }) 
 router.get('/curiosity' , async (req,res)=>{
     //change variable names
@@ -49,8 +48,10 @@ router.get('/curiosity' , async (req,res)=>{
     const roverName = 'curiosity'
     let url = await urlBuilder(roverName)
     let marsData = await FetchDataFromApi(url)
-    res.render('mars', {marsData:marsData})
+    res.send( {marsData:marsData})
 }) 
- 
+
+
+
 
 module.exports = router
