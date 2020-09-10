@@ -1,0 +1,59 @@
+*{
+    box-sizing: border-box;
+}
+
+.navbar{
+    height:10vh;
+    border: green 1px solid;
+}
+
+.potd-container{
+    padding: 10vw;
+    border: green 1px solid;
+}
+
+.rover-image-container{
+    background-color: lightsalmon;
+   border: 2px solid green;
+   max-height: 50vh;
+   max-width: 30vw;
+}
+.rover-image-container>p{
+    width:40%
+}
+
+.potd-img{
+    width:60%;
+    margin:2vw;
+}
+
+.mars-rover-container{
+    border: 1px solid red
+}
+
+.mars-rover-navbar{
+    background-color: lightskyblue;
+    height: 50vh;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.rover-btn{
+    height: 30vh;
+    width: 30vw;
+    border:1px solid blue;
+    cursor: pointer;
+}
+
+.rover-image-gallery{
+    display:flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.rover-image-gallery img {
+   width:  400px;
+    height: 400px;
+    object-fit: cover;
+}

@@ -1,22 +1,15 @@
-
+ const sol = '1050'//zrobic sol i musi zwracac bład jeśli nieprawidłowy
 
 const potdPath = '/potd'
-const curiosityRoverPath = '/mars/curiosity'
-const opportunityRoverPath = '/mars/opportunity'
-const spiritRoverPath = '/mars/spirit'
 
 let description = document.querySelector('.potd-description')
 let photoOfTheDay=document.querySelector('.potd-img')
 let title = document.querySelector('.potd-title')
+let potdHref = document.querySelector('.a-potd')
 
 let roverGallery = document.querySelector('.rover-image-gallery')
 let roverImage = document.querySelector('.image-from-rover')
 
-/* const getData =()=>{
-    fetch('/potd')
-      .then((res)=>res.json())
-      .then((data)=>setPhotoOfTheDay(data))
-} */
 
 const fetchDataFromApi = async (path) =>{
     let response = await fetch(path)
@@ -25,18 +18,15 @@ const fetchDataFromApi = async (path) =>{
 }
 
 
-const curiosityBtn = document.querySelector('.curiosity-rover')
-const opportunityBtn = document.querySelector('.opportunity-rover')
-const spiritBtn = document.querySelector('.spirit-rover')
-
-
-
-
+const curiosityBtn = document.querySelector('#curiosity-rover')
+const opportunityBtn = document.querySelector('#opportunity-rover')
+const spiritBtn = document.querySelector('#spirit-rover')
 
 //get nasa photo of the day
 let setPhotoOfTheDay = data =>{
    description.textContent =  data.nasaData.explanation
    photoOfTheDay.src=data.nasaData.hdurl
+   potdHref.setAttribute('href',data.nasaData.hdurl )
    title.textContent=data.nasaData.title
 }
 
@@ -47,45 +37,37 @@ const getPotd = async ()=>{
 }
 
 //get photos from rovers
-const getRoverData = async rover =>{
-     const roverData = await fetchDataFromApi(rover)
+const getRoverData = async (rover, sol)=>{
+    let roverPath = `/mars/?sol=${sol}&rover=${rover}`
+     const roverData = await fetchDataFromApi(roverPath)
      setRoverData(roverData)
-   
-       let image = document.createElement('IMG')
-       image.setAttribute("src", "https://mars.nasa.gov/msl-raw-images/proj/msl/redops/ods/surface/sol/01002/opgs/edr/fcam/FRB_486444942EDR_F0481570FHAZ00323M_.JPG")
-image.setAttribute("width", "304");
-  image.setAttribute("height", "228");
-  image.setAttribute("alt", "The Pulpit Rock");
-       document.body.appendChild(image) 
+ 
 }
 
 
  const setRoverData = data =>{
-    data.marsData.photos.forEach((item)=>{
-        console.log(item.img_src)
+     roverGallery.innerHTML=''
+     data.marsData.photos.forEach((item)=>{
+        console.log('item',item)
     
-       let imageContainer = document.createElement('div')
-     
-
+       let imageContainer = document.createElement('a')
+           imageContainer.classList.add('rover-image-container')
+           imageContainer.setAttribute('href',item.img_src )
+           imageContainer.setAttribute('target', '_blank')
+           imageContainer.innerHTML = `<p> id ${item.id}</p>`;
+           imageContainer.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`;
       
-
-       imageContainer.innerHTML = `<p>${item.id}</p>`;
-       
        roverGallery.appendChild(imageContainer);
-        
-        
-    })
-    
+       let image = document.createElement('IMG')
+         image.classList.add('rover-image')
+         image.src = item.img_src
+         imageContainer.appendChild(image)
+    }) 
 }
-
-const create = () =>{
-    
-}
-
 
 
 getPotd();
 
-curiosityBtn.addEventListener('click',()=>{getRoverData(curiosityRoverPath)})
-opportunityBtn.addEventListener('click',()=>{getRoverData(opportunityRoverPath)})
-spiritBtn.addEventListener('click',()=>{getRoverData(spiritRoverPath)})
+curiosityBtn.addEventListener('click',()=>{getRoverData('curiosity',sol)})
+opportunityBtn.addEventListener('click',()=>{getRoverData('opportunity',sol)})
+spiritBtn.addEventListener('click',()=>{getRoverData('spirit',sol)})//tu przekazać rover
