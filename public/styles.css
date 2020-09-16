@@ -57,3 +57,14 @@
     height: 400px;
     object-fit: cover;
 }
+
+.rover-data-selector{
+    height: 10vh;
+    border: magenta 2px solid;
+}
+
+.sel-btn{
+    background-color: maroon;
+    height:40px;
+    width: 80px;
+}

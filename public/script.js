@@ -8,7 +8,11 @@ let potdHref = document.querySelector(".a-potd");
 let roverGallery = document.querySelector(".rover-image-gallery");
 let roverImage = document.querySelector(".image-from-rover");
 
-let setSolBtn = document.querySelector(".set-sol");
+let roverDataSelector = document.querySelector('.rover-data-selector')
+
+const curiosityBtn = document.querySelector("#curiosity-rover");
+const opportunityBtn = document.querySelector("#opportunity-rover");
+const spiritBtn = document.querySelector("#spirit-rover");
 
 const fetchDataFromApi = async (path) => {
   let response = await fetch(path);
@@ -16,18 +20,14 @@ const fetchDataFromApi = async (path) => {
   return data;
 };
 
-const curiosityBtn = document.querySelector("#curiosity-rover");
-const opportunityBtn = document.querySelector("#opportunity-rover");
-const spiritBtn = document.querySelector("#spirit-rover");
-
-//get nasa photo of the day
+//set nasa photo of the day to the div
 let setPhotoOfTheDay = (data) => {
   description.textContent = data.nasaData.explanation;
   photoOfTheDay.src = data.nasaData.hdurl;
   potdHref.setAttribute("href", data.nasaData.hdurl);
   title.textContent = data.nasaData.title;
 };
-
+//fetch nasa photo of the day
 const getPotd = async () => {
   const potdPath = "/potd";
   const potdData = await fetchDataFromApi(potdPath);
@@ -36,20 +36,47 @@ const getPotd = async () => {
 /*  */
 
 // click rover button to choose rover, then fetch info then pass parameters and get photos
-const getRoverInfo = async () => {
-  console.log("klik");
-  let roverInfoPath = `mars/info`;
+const getRoverInfo = async rover => {
+  let roverInfoPath = `mars/info/?rover=${rover}`;
   let roverInfo = await fetchDataFromApi(roverInfoPath);
-  console.log("rower info", roverInfo);
+ return roverInfo
 };
+
+const selectRoverData = async rover =>{
+//temporary
+   //fetch rover info
+    let roverInfo = await getRoverInfo(rover)
+    //clear roverDataSelector div
+    roverDataSelector.innerHTML=''
+    //create OK button
+    let selectBtn = document.createElement('button');
+    selectBtn.setAttribute('content', 'text content')
+    selectBtn.setAttribute('class', 'sel-btn')
+    selectBtn.innerHTML = 'OK'
+    roverDataSelector.appendChild(selectBtn)
+
+    //create sol choosing slider
+
+    let slider = document.createElement('input')
+    slider.setAttribute('type','slider')
+
+    roverDataSelector.appendChild(slider)
+//////////////////////////////////////create slider
+    //pass func getRoverData reference to the ok button
+    selectBtn.addEventListener('click',()=>getRoverData(rover, roverInfo.roverInfo))
+
+
+}
 
 //get photos from rovers
 const getRoverData = async (rover, sol) => {
+  console.log('get rover', rover, sol)
   let roverPath = `/mars/?sol=${sol}&rover=${rover}`;
   const roverData = await fetchDataFromApi(roverPath);
   setRoverData(roverData);
 };
 
+//create photo gallery
 const setRoverData = (data) => {
   roverGallery.innerHTML = "";
   data.marsData.photos.forEach((item) => {
@@ -71,14 +98,11 @@ const setRoverData = (data) => {
 getPotd();
 
 curiosityBtn.addEventListener("click", () => {
-  getRoverData("curiosity", 1000);
+  selectRoverData("curiosity");
 });
 opportunityBtn.addEventListener("click", () => {
-  getRoverData("opportunity", 1090);
+  selectRoverData("opportunity");
 });
 spiritBtn.addEventListener("click", () => {
-  getRoverData("spirit", 2000);
+  selectRoverData("spirit");
 }); //tu przekazać rover
-setSolBtn.addEventListener("click", () => {
-  getRoverInfo();
-});
