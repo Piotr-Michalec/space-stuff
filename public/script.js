@@ -58,12 +58,29 @@ const selectRoverData = async rover =>{
     //create sol choosing slider
 
     let slider = document.createElement('input')
-    slider.setAttribute('type','slider')
+    slider.setAttribute('type','range')
+    slider.setAttribute('min',1000)
+    slider.setAttribute('max',roverInfo.roverInfo)
+    slider.setAttribute('value',1000)
 
     roverDataSelector.appendChild(slider)
-//////////////////////////////////////create slider
+
+    //slider value
+    let sliderValue = document.createElement('P')
+   
+    //sliderValue.innerHTML = sliderValue.nodeValue;
+    sliderValue.innerHTML = ("Sol: "+slider.value)
+    let sol;
+     slider.oninput = () =>{
+     sliderValue.innerHTML = ("Sol: "+slider.value)
+     sol=slider.value
+    }
+    
+    roverDataSelector.appendChild(sliderValue)
+
+
     //pass func getRoverData reference to the ok button
-    selectBtn.addEventListener('click',()=>getRoverData(rover, roverInfo.roverInfo))
+    selectBtn.addEventListener('click',()=>getRoverData(rover,sol))
 
 
 }
@@ -84,14 +101,23 @@ const setRoverData = (data) => {
     imageContainer.classList.add("rover-image-container");
     imageContainer.setAttribute("href", item.img_src);
     imageContainer.setAttribute("target", "_blank");
-    imageContainer.innerHTML = `<p> id ${item.id}</p>`;
-    imageContainer.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`;
+    let textOnImageMiddle = document.createElement('div')
+    let textOnImage = document.createElement('div')
+    textOnImage.setAttribute('class', 'text-on-image')
+    textOnImage.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`;
 
-    roverGallery.appendChild(imageContainer);
+    textOnImageMiddle.setAttribute('class', 'text-on-image-middle')
+  
+    //imageContainer.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`;
+
+   
     let image = document.createElement("IMG");
     image.classList.add("rover-image");
     image.src = item.img_src;
+    roverGallery.appendChild(imageContainer);
     imageContainer.appendChild(image);
+    imageContainer.appendChild(textOnImageMiddle)
+    textOnImageMiddle.appendChild(textOnImage)
   });
 };
 
@@ -105,4 +131,4 @@ opportunityBtn.addEventListener("click", () => {
 });
 spiritBtn.addEventListener("click", () => {
   selectRoverData("spirit");
-}); //tu przekazać rover
+}); 
