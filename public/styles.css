@@ -33,10 +33,23 @@
 }
 
 .rover-btn{
-    height: 30vh;
+    height: 50vh;
     width: 30vw;
     border:1px solid blue;
     cursor: pointer;
+    background-size: cover;
+}
+
+#curiosity-rover{
+    background-image: url('./images/mars-curiosity.jpg');
+}
+
+#opportunity-rover{
+    background-image: url('./images/mars-opportunity.jpg');
+}
+
+#spirit-rover{
+    background-image: url('./images/mars-spirit.jpg');
 }
 /* rover images */
 
@@ -63,37 +76,41 @@
    width:  100%;
     height: 100%;
     object-fit: cover;
+    transition: all .2s ease;
+    overflow: hidden;
 }
 
-.text-on-image-middle{
+.rover-image-container:hover .rover-image{
+    transform: scale(1.05);
+}
+ .text-on-image-middle{
     opacity: 0;
-   
     position: absolute;
     top:0px;
     left:0px;
-    height: 100%;
+    height: 0%;
     width: 100%;
+    transition: 0.5s ease;
+} 
+ 
+ .text-on-image{
+    position: absolute;
+    color: white;
+  font-size: 20px;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
 }
  
-.text-on-image{
-    position: absolute;
-    border: mediumseagreen 2px solid;
-    top:10px;
-    border: 2px solid green;
-    height: 50%;
-    width: 100%;
-}
 
 
-
-.rover-image-container:hover .text-on-image-middle{
+ .rover-image-container:hover .text-on-image-middle{
     opacity: 1;
+    height: 10%;
+    background-color: rgba(178, 0, 0, 0.1);
 
-}
-/* .rover-image-container>p{
-    width:40%
-}
- */
+} 
 
 
 

@@ -39,6 +39,7 @@ const getPotd = async () => {
 const getRoverInfo = async rover => {
   let roverInfoPath = `mars/info/?rover=${rover}`;
   let roverInfo = await fetchDataFromApi(roverInfoPath);
+  console.log('rover info',roverInfo)
  return roverInfo
 };
 
@@ -70,7 +71,7 @@ const selectRoverData = async rover =>{
    
     //sliderValue.innerHTML = sliderValue.nodeValue;
     sliderValue.innerHTML = ("Sol: "+slider.value)
-    let sol;
+    let sol =1000;
      slider.oninput = () =>{
      sliderValue.innerHTML = ("Sol: "+slider.value)
      sol=slider.value
@@ -87,9 +88,9 @@ const selectRoverData = async rover =>{
 
 //get photos from rovers
 const getRoverData = async (rover, sol) => {
-  console.log('get rover', rover, sol)
   let roverPath = `/mars/?sol=${sol}&rover=${rover}`;
   const roverData = await fetchDataFromApi(roverPath);
+  console.log('rover data', roverData)
   setRoverData(roverData);
 };
 
@@ -101,14 +102,14 @@ const setRoverData = (data) => {
     imageContainer.classList.add("rover-image-container");
     imageContainer.setAttribute("href", item.img_src);
     imageContainer.setAttribute("target", "_blank");
-    let textOnImageMiddle = document.createElement('div')
+     let textOnImageMiddle = document.createElement('div')
     let textOnImage = document.createElement('div')
     textOnImage.setAttribute('class', 'text-on-image')
-    textOnImage.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`;
+    textOnImage.innerHTML = `<p> earth date ${item.earth_date}</p>`; 
 
-    textOnImageMiddle.setAttribute('class', 'text-on-image-middle')
+    textOnImageMiddle.setAttribute('class', 'text-on-image-middle') 
   
-    //imageContainer.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`;
+    /* imageContainer.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`; */
 
    
     let image = document.createElement("IMG");
@@ -116,8 +117,8 @@ const setRoverData = (data) => {
     image.src = item.img_src;
     roverGallery.appendChild(imageContainer);
     imageContainer.appendChild(image);
-    imageContainer.appendChild(textOnImageMiddle)
-    textOnImageMiddle.appendChild(textOnImage)
+     imageContainer.appendChild(textOnImageMiddle)
+    textOnImageMiddle.appendChild(textOnImage) 
   });
 };
 
