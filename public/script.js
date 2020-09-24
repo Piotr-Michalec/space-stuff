@@ -8,7 +8,7 @@ let potdHref = document.querySelector(".a-potd");
 let roverGallery = document.querySelector(".rover-image-gallery");
 let roverImage = document.querySelector(".image-from-rover");
 
-let roverDataSelector = document.querySelector('.rover-data-selector')
+let roverDataSelector = document.querySelector(".rover-data-selector");
 
 const curiosityBtn = document.querySelector("#curiosity-rover");
 const opportunityBtn = document.querySelector("#opportunity-rover");
@@ -35,62 +35,49 @@ const getPotd = async () => {
 };
 /*  */
 
-// click rover button to choose rover, then fetch info then pass parameters and get photos
-const getRoverInfo = async rover => {
+// click rover button to choose rover, then fetch info like number of sol availible for choosen rover
+// then pass parameters and get photos
+const getRoverInfo = async (rover) => {
+  //check availible data
   let roverInfoPath = `mars/info/?rover=${rover}`;
   let roverInfo = await fetchDataFromApi(roverInfoPath);
-  console.log('rover info',roverInfo)
- return roverInfo
+  console.log("rover info", roverInfo);
+  return roverInfo;
 };
 
-const selectRoverData = async rover =>{
-//temporary
-   //fetch rover info
-    let roverInfo = await getRoverInfo(rover)
-    //clear roverDataSelector div
-    roverDataSelector.innerHTML=''
-    //create OK button
-    let selectBtn = document.createElement('button');
-    selectBtn.setAttribute('content', 'text content')
-    selectBtn.setAttribute('class', 'sel-btn')
-    selectBtn.innerHTML = 'OK'
-    roverDataSelector.appendChild(selectBtn)
+//sol selector
 
-    //create sol choosing slider
+let slider = document.querySelector(".sol-select-slider");
 
-    let slider = document.createElement('input')
-    slider.setAttribute('type','range')
-    slider.setAttribute('min',1000)
-    slider.setAttribute('max',roverInfo.roverInfo)
-    slider.setAttribute('value',1000)
+let selectBtn = document.querySelector("#sel-btn");
 
-    roverDataSelector.appendChild(slider)
+const selectRoverData = async (rover) => {
+  let maxSol = await getRoverInfo(rover);
+  console.log("maxsol", maxSol.roverInfo);
+  //set max sol to the slider
+  slider.max = maxSol.roverInfo;
+  slider.value = 1000;
 
-    //slider value
-    let sliderValue = document.createElement('P')
-   
-    //sliderValue.innerHTML = sliderValue.nodeValue;
-    sliderValue.innerHTML = ("Sol: "+slider.value)
-    let sol =1000;
-     slider.oninput = () =>{
-     sliderValue.innerHTML = ("Sol: "+slider.value)
-     sol=slider.value
-    }
-    
-    roverDataSelector.appendChild(sliderValue)
+  
+  let sol = 1000;
+  let solVal = document.querySelector("#sol-value");
+  let solMax = document.querySelector("#sol-max-value");
 
+  solMax.innerHTML = slider.max;
+  solVal.innerHTML = slider.value;
 
-    //pass func getRoverData reference to the ok button
-    selectBtn.addEventListener('click',()=>getRoverData(rover,sol))
+  slider.oninput = () => {
+    solVal.innerHTML = ("Sol: ", slider.value);
+    sol = slider.value;
+  };
 
-
-}
-
+  selectBtn.addEventListener("click", () => getRoverData(rover, sol));
+};
 //get photos from rovers
 const getRoverData = async (rover, sol) => {
   let roverPath = `/mars/?sol=${sol}&rover=${rover}`;
   const roverData = await fetchDataFromApi(roverPath);
-  console.log('rover data', roverData)
+  console.log("rover data", roverData);
   setRoverData(roverData);
 };
 
@@ -102,23 +89,21 @@ const setRoverData = (data) => {
     imageContainer.classList.add("rover-image-container");
     imageContainer.setAttribute("href", item.img_src);
     imageContainer.setAttribute("target", "_blank");
-     let textOnImageMiddle = document.createElement('div')
-    let textOnImage = document.createElement('div')
-    textOnImage.setAttribute('class', 'text-on-image')
-    textOnImage.innerHTML = `<p> earth date ${item.earth_date}</p>`; 
+    let textOnImageMiddle = document.createElement("div");
+    let textOnImage = document.createElement("div");
+    textOnImage.setAttribute("class", "text-on-image");
+    textOnImage.innerHTML = `<p> earth date ${item.earth_date}</p>`;
+    textOnImageMiddle.setAttribute("class", "text-on-image-middle");
 
-    textOnImageMiddle.setAttribute('class', 'text-on-image-middle') 
-  
     /* imageContainer.innerHTML = `<p> earth date ${item.earth_date}</p> <p> sol ${item.sol}</p>`; */
 
-   
     let image = document.createElement("IMG");
     image.classList.add("rover-image");
     image.src = item.img_src;
     roverGallery.appendChild(imageContainer);
     imageContainer.appendChild(image);
-     imageContainer.appendChild(textOnImageMiddle)
-    textOnImageMiddle.appendChild(textOnImage) 
+    imageContainer.appendChild(textOnImageMiddle);
+    textOnImageMiddle.appendChild(textOnImage);
   });
 };
 
@@ -132,4 +117,4 @@ opportunityBtn.addEventListener("click", () => {
 });
 spiritBtn.addEventListener("click", () => {
   selectRoverData("spirit");
-}); 
+});

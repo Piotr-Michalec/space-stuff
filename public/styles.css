@@ -3,7 +3,7 @@
 }
 
 .navbar{
-    height:10vh;
+    height:5vh;
     border: green 1px solid;
 }
 
@@ -21,10 +21,14 @@
 /* mars */
 /* mars navbar */
 .mars-rover-navbar{
+    position: relative;
+    top: 10vh;
     background-color: lightskyblue;
     height: 50vh;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
+    overflow: auto;
 }
 
 /* rover buttons */
@@ -33,11 +37,13 @@
 }
 
 .rover-btn{
-    height: 50vh;
-    width: 30vw;
+    position: relative;
+    height:80%;
+   width: 500px;
     border:1px solid blue;
     cursor: pointer;
     background-size: cover;
+    transition: all .2s ease;
 }
 
 #curiosity-rover{
@@ -50,6 +56,16 @@
 
 #spirit-rover{
     background-image: url('./images/mars-spirit.jpg');
+}
+
+#curiosity-rover:hover{
+    transform: scale(1.05);
+}
+#opportunity-rover:hover{
+    transform: scale(1.05);
+}
+#spirit-rover:hover{
+    transform: scale(1.05);
 }
 /* rover images */
 
@@ -67,6 +83,7 @@
     position: relative;
     width: 450px;
     max-height: 400px; 
+    padding:10px;
 }
 
 
@@ -96,7 +113,7 @@
  .text-on-image{
     position: absolute;
     color: white;
-  font-size: 20px;
+    font-size: 20px;
     top:50%;
     left:50%;
     transform: translate(-50%, -50%);
@@ -123,7 +140,9 @@
 
 .rover-data-selector{
     position:sticky;
-    top:0;
+    margin-top: 10vh;
+    top:0%;
+    z-index: 99;
     height: 10vh;
     border: magenta 2px solid;
 }
