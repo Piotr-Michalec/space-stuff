@@ -2,11 +2,33 @@
     box-sizing: border-box;
 }
 
-.navbar{
-    height:5vh;
-    border: green 1px solid;
+body{
+    background-image: url('./images/mars4.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
 
+.navbar{
+    height:5vh;
+    
+}
+
+#overlay{
+    position: fixed;
+    width:100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+
+}
+.hero{
+    position: relative;
+    height:100vh;
+    
+}
 /* photo of the day
  */.potd-container{
     padding: 10vw;
@@ -22,70 +44,99 @@
 /* mars navbar */
 .mars-rover-navbar{
     position: relative;
-    top: 10vh;
-    background-color: lightskyblue;
-    height: 50vh;
+    top: 5vh;
+   
+    height: 70vh;
     display: flex;
-    flex-wrap: wrap;
+   
     justify-content: space-evenly;
     overflow: auto;
 }
 
 /* rover buttons */
 .mars-rover-container{
-    border: 1px solid red
+    position: relative;
+    margin:auto;
+   
+    width: 80%;
 }
 
 .rover-btn{
     position: relative;
-    height:80%;
+    height:90%;
    width: 500px;
-    border:1px solid blue;
+   
     cursor: pointer;
-    background-size: cover;
+    background-size: contain;
+    background-repeat: no-repeat;
     transition: all .2s ease;
+    z-index: 99;
+    margin:1vw;
+    background-color: rgba(38, 7, 7, 0.64);
+}
+.rover-btn-title{
+    height: 10%;
+    text-align: center;
 }
 
-#curiosity-rover{
+.rover-btn h3{
+   
+    color: white;
+    margin: auto;
+}
+
+.rover-btn-img{
+  height:50%;
+  background-size: contain;
+    background-repeat: no-repeat;
+}
+.rover-btn-description{
+    height: auto;
+    color:white;
+    text-align: center;
+}
+
+#curiosity-rover .rover-btn-img{
     background-image: url('./images/mars-curiosity.jpg');
 }
 
-#opportunity-rover{
+#opportunity-rover .rover-btn-img{
     background-image: url('./images/mars-opportunity.jpg');
 }
 
-#spirit-rover{
+#spirit-rover .rover-btn-img{
     background-image: url('./images/mars-spirit.jpg');
 }
 
 #curiosity-rover:hover{
-    transform: scale(1.05);
+   
+    border-top: white 1px solid;
 }
 #opportunity-rover:hover{
-    transform: scale(1.05);
+    border: white 3px solid;
 }
 #spirit-rover:hover{
-    transform: scale(1.05);
+    border: white 3px solid;
 }
 /* rover images */
 
 .rover-image-gallery{
-    display:flex;
-    flex-wrap: wrap;
+  display:grid;
+  grid-template-columns: repeat(4,25%);
     max-width: 100vw; 
-    justify-content: center;
-    align-content: center;
+  grid-row-gap: 3px;
+ 
     
     
 }
-
+/* 
 .rover-image-container{
     position: relative;
-    width: 450px;
+    
     max-height: 400px; 
-    padding:10px;
+    
 }
-
+ */
 
 
 .rover-image {
@@ -97,10 +148,11 @@
     overflow: hidden;
 }
 
-.rover-image-container:hover .rover-image{
-    transform: scale(1.05);
-}
- .text-on-image-middle{
+/* .rover-image-container:hover .rover-image{
+    transform: scale(1.01);
+    
+} */
+/*  .text-on-image-middle{
     opacity: 0;
     position: absolute;
     top:0px;
@@ -109,8 +161,8 @@
     width: 100%;
     transition: 0.5s ease;
 } 
- 
- .text-on-image{
+  */
+/*  .text-on-image{
     position: absolute;
     color: white;
     font-size: 20px;
@@ -119,15 +171,15 @@
     transform: translate(-50%, -50%);
     text-align: center;
 }
- 
+  */
 
 
- .rover-image-container:hover .text-on-image-middle{
+/*  .rover-image-container:hover .text-on-image-middle{
     opacity: 1;
     height: 10%;
     background-color: rgba(178, 0, 0, 0.1);
 
-} 
+}  */
 
 
 
@@ -140,9 +192,21 @@
 
 .rover-data-selector{
     position:sticky;
-    margin-top: 10vh;
+    display: block;
+   margin-top: 2vh;
     top:0%;
     z-index: 99;
-    height: 10vh;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border: magenta 2px solid;
+}
+
+@media screen and (max-width: 600px){
+  
+    .rover-image-gallery{
+        display: flex;
+        flex-wrap: wrap;
+    }
 }

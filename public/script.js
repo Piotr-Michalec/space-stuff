@@ -62,9 +62,10 @@ const selectRoverData = async (rover) => {
   let sol = 1000;
   let solVal = document.querySelector("#sol-value");
   let solMax = document.querySelector("#sol-max-value");
-
+  let roverName = document.querySelector("#rover-name")
   solMax.innerHTML = slider.max;
   solVal.innerHTML = slider.value;
+  roverName.innerHTML = rover
 
   slider.oninput = () => {
     solVal.innerHTML = ("Sol: ", slider.value);
@@ -102,8 +103,8 @@ const setRoverData = (data) => {
     image.src = item.img_src;
     roverGallery.appendChild(imageContainer);
     imageContainer.appendChild(image);
-    imageContainer.appendChild(textOnImageMiddle);
-    textOnImageMiddle.appendChild(textOnImage);
+    //imageContainer.appendChild(textOnImageMiddle);
+    //textOnImageMiddle.appendChild(textOnImage);
   });
 };
 

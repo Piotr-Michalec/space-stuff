@@ -1,44 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link href='styles.css' type="text/css" rel='stylesheet'>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+      crossorigin="anonymous"
+    />
+    <link href="styles.css" type="text/css" rel="stylesheet" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script defer src ="script.js"></script>
-</head>
-<body>
-    <nav class='navbar'>
-      
-        <a href="nasapotd.html">Nasa photo of the day</a>
-    </nav>
-    
-      
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <script defer src="script.js"></script>
+  </head>
+  <body>
+   
+    <div class="hero">
 
-      <div class="mars-rover-container">
-          <div class='mars-rover-navbar'>
-              
-            <div class= 'rover-btn' id='curiosity-rover'>curiosity</div>
-            <div class= 'rover-btn' id='opportunity-rover'>opportunity</div>
-            <div class= 'rover-btn' id='spirit-rover'>spirit</div>
-          
+    <nav class="navbar">
+      <a href="nasapotd.html">Nasa photo of the day</a>
+    </nav>
+   
+    
+    <div class="mars-rover-container">
+      <div class="mars-rover-navbar">
+        <div class="rover-btn" id="curiosity-rover">
+          <div class='rover-btn-title'><h3>Curiosity</h3></div>
+          <div class='rover-btn-img'></div>
+          <div class='rover-btn-description'><p>Curiosity is a car-sized rover 
+            designed to explore the Gale crater on Mars as part of NASA's Mars Science Laboratory mission.
+             Curiosity was launched from Cape Canaveral on November 26, 2011,
+             at 15:02 UTC and landed on Aeolis Palus inside Gale on Mars on August 6, 2012, 05:17 UTC.</p></div>
         </div>
-        <div class="rover-data-selector">
-           <label for='sol-select-slider'>Sol</label>
-           <input type='range' class = 'sol-select-slider' name='sol-slider' min='1000' max = '2000'value='1000'> 
-          <button id='sel-btn'>ok</button>
-          <p id='sol-value'>value</p>
-          <p id='sol-max-value'>Max</p>
+        <div class="rover-btn" id="opportunity-rover">
+          <div class='rover-btn-title'><h3>Opportunity</h3></div>
+          <div class='rover-btn-img'></div>
+          <div class='rover-btn-description'><p>Opportunity, also known as MER-B or MER-1, and nicknamed "Oppy",
+            is a robotic rover that was active on Mars from 2004 until the middle of 2018</p></div>
         </div>
+        <div class="rover-btn" id="spirit-rover">
+          <div class='rover-btn-title'><h3>Spirit</h3></div>
+          <div class='rover-btn-img'></div>
+          <div class='rover-btn-description'>Spirit, 
+            also known as MER-A or MER-2, is a robotic rover on Mars, active from 2004 to 2010.
+             It was one of two rovers of NASA's Mars Exploration Rover Mission</div>
+        </div>
+      </div>
+      <div class="rover-data-selector">
+        <span id="rover-name">Rover</span>
         
-          <section class="rover-image-gallery">
-              gallery 
-          </section>
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-</body>
+        <span id="sol-value">value</span>
+        <div>
+        <label for="sol-select-slider">Sol min 1000</label>
+        <input
+          type="range"
+          class="sol-select-slider"
+          name="sol-slider"
+          min="1000"
+          max="2000"
+          value="1000"
+        />
+        <span>Max: </span><span id="sol-max-value"></span>
+      </div>
+        <button id="sel-btn">ok</button>
+       
+       
+      
+      </div>
+    
+      <section class="rover-image-gallery"></section>
+    </div>
+  </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+      integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+      integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
