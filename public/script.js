@@ -53,7 +53,7 @@ let selectBtn = document.querySelector("#sel-btn");
 
 const selectRoverData = async (rover) => {
   let maxSol = await getRoverInfo(rover);
-  console.log("maxsol", maxSol.roverInfo);
+  
   //set max sol to the slider
   slider.max = maxSol.roverInfo;
   slider.value = 1000;

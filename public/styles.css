@@ -2,6 +2,15 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: d-din-bold;
+    src: url(fonts/d-din.bold.otf);
+}
+@font-face {
+    font-family: d-din-regular;
+    src: url(fonts/d-din.regular.otf);
+}
+
 body{
     background-image: url('./images/mars4.jpg');
     background-repeat: no-repeat;
@@ -67,48 +76,57 @@ body{
    width: 500px;
    
     cursor: pointer;
-    background-size: contain;
-    background-repeat: no-repeat;
+    
     transition: all .2s ease;
     z-index: 99;
-    margin:1vw;
+    
     background-color: rgba(38, 7, 7, 0.64);
+  
 }
 .rover-btn-title{
     height: 10%;
     text-align: center;
+    font-family:  d-din-bold;
+    font-size: medium;
+    color: white;
+    padding:  0.5rem;
+
 }
 
-.rover-btn h3{
+/* .rover-btn h3{
    
     color: white;
     margin: auto;
-}
+} */
 
-.rover-btn-img{
-  height:50%;
+img{
+    position: relative;
+  height:auto;
+  width: 100%;
   background-size: contain;
     background-repeat: no-repeat;
 }
 .rover-btn-description{
+    padding: 0.5rem;
     height: auto;
     color:white;
     text-align: center;
+    font-family: d-din-regular;
+    font-size: 1rem;
 }
 
-#curiosity-rover .rover-btn-img{
-    background-image: url('./images/mars-curiosity.jpg');
+.rover-btn:hover{
+    border-top: red 1px solid;
+    border-bottom: red 1px solid;
 }
 
-#opportunity-rover .rover-btn-img{
-    background-image: url('./images/mars-opportunity.jpg');
+#opportunity-rover {
+    margin-left: 2rem;
+    margin-right: 2rem;
+    
 }
 
-#spirit-rover .rover-btn-img{
-    background-image: url('./images/mars-spirit.jpg');
-}
-
-#curiosity-rover:hover{
+/* #curiosity-rover:hover{
    
     border-top: white 1px solid;
 }
@@ -117,9 +135,47 @@ body{
 }
 #spirit-rover:hover{
     border: white 3px solid;
-}
+} */
 /* rover images */
 
+
+/* selector */
+.sel-btn{
+    background-color: maroon;
+    height:40px;
+    width: 80px;
+}
+
+.rover-data-selector{
+    position:sticky;
+    display: block;
+   margin-top: 2vh;
+    top:0%;
+    z-index: 99;
+    height: 20vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: magenta 2px solid;
+    
+    color: white;
+}
+.rover-data-selector h3 {
+    font-family: d-din-bold ;
+}
+
+.rover-data-selector span label{
+    font-family: d-din-regular ;
+}
+
+#sol-value{
+    font-size: 2vw;
+}
+#rover-name{
+    text-transform: uppercase;
+  
+}
+/* Gallery */
 .rover-image-gallery{
   display:grid;
   grid-template-columns: repeat(4,25%);
@@ -139,14 +195,29 @@ body{
  */
 
 
-.rover-image {
+ .rover-image {
     position: relative;
-   width:  100%;
+   width: 100%;
     height: 100%;
     object-fit: cover;
     transition: all .2s ease;
     overflow: hidden;
+} 
+
+
+/* SLIDER */
+
+.slider-container{
+    position: relative;
+    width: 60vw;
 }
+
+.sol-select-slider:hover{
+    cursor: pointer;
+}
+ .sol-select-slider{
+    width:80%;
+} 
 
 /* .rover-image-container:hover .rover-image{
     transform: scale(1.01);
@@ -183,25 +254,6 @@ body{
 
 
 
-/* selector */
- .sel-btn{
-    background-color: maroon;
-    height:40px;
-    width: 80px;
-}
-
-.rover-data-selector{
-    position:sticky;
-    display: block;
-   margin-top: 2vh;
-    top:0%;
-    z-index: 99;
-    height: 20vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: magenta 2px solid;
-}
 
 @media screen and (max-width: 600px){
   
