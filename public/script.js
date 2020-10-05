@@ -49,7 +49,7 @@ const getRoverInfo = async (rover) => {
 
 let slider = document.querySelector(".sol-select-slider");
 
-let selectBtn = document.querySelector("#sel-btn");
+let selectBtn = document.querySelector(".button");
 
 const selectRoverData = async (rover) => {
   let maxSol = await getRoverInfo(rover);
@@ -105,6 +105,7 @@ const setRoverData = (data) => {
     imageContainer.appendChild(image);
     //imageContainer.appendChild(textOnImageMiddle);
     //textOnImageMiddle.appendChild(textOnImage);
+    window.scrollTo( 0,700);
   });
 };
 
