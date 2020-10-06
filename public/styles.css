@@ -23,6 +23,8 @@ body {
 
 .navbar {
   height: 5vh;
+  color: #ffffff;
+  padding:0;
 }
 
 #overlay {
@@ -154,7 +156,7 @@ img {
 /* selector */
 
 .rover-data-selector {
-  position: sticky;
+  position: relative;
   display: block;
   margin-top: 4vh;
   top: 0%;
@@ -299,37 +301,12 @@ img {
   width: 80%;
 }
 
-/* .rover-image-container:hover .rover-image{
-    transform: scale(1.01);
-    
-} */
-/*  .text-on-image-middle{
-    opacity: 0;
-    position: absolute;
-    top:0px;
-    left:0px;
-    height: 0%;
-    width: 100%;
-    transition: 0.5s ease;
-} 
-  */
-/*  .text-on-image{
-    position: absolute;
-    color: white;
-    font-size: 20px;
-    top:50%;
-    left:50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+.footer{
+
+  color: #ffffff;
+  height: 5vh;
+  padding: 0;
 }
-  */
-
-/*  .rover-image-container:hover .text-on-image-middle{
-    opacity: 1;
-    height: 10%;
-    background-color: rgba(178, 0, 0, 0.1);
-
-}  */
 
 
 
@@ -343,7 +320,7 @@ img {
         position: relative;
         height: auto;
       }
-    }
+    
 
   .mars-rover-container {
     position: relative;
@@ -358,7 +335,6 @@ img {
     height: auto;
     display: flex;
     flex-direction: column;
-
     overflow: auto;
   }
 
@@ -366,16 +342,44 @@ img {
     position: relative;
     height: auto;
     width: 100%;
-    cursor: pointer;
-
-    transition: all 0.2s ease;
-    z-index: 99;
-    background-color: rgba(38, 7, 7, 0.64);
-
-    transition-duration: 0.4s;
-    overflow: hidden;
-    box-shadow: 0 5px 15px #193047;
+    
   }
+  #opportunity-rover {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  #sol-value {
+    font-size: 2rem;
+}
+.rover-data-selector {
+  position: relative;
+  display: block;
+  margin-top: 4vh;
+  top: 0%;
+  z-index: 99;
+ 
+ 
+ height: 80vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 5px 15px #193047;
+  background-color: rgba(38, 7, 7, 0.64);
+  color: white;
+}
+.slider-container {
+  position: relative;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+align-items: center;  
+}
+#span-min{
+  visibility: hidden;
+}
+#span-max{
+  padding-top: 1rem;
+}
 }
 
 /* /* Small devices (portrait tablets and large phones, 600px and up) 
