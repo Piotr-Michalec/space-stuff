@@ -21,7 +21,7 @@ const fetchDataFromApi = async (path) => {
 };
 
 //set nasa photo of the day to the div
-let setPhotoOfTheDay = (data) => {
+/* let setPhotoOfTheDay = (data) => {
   description.textContent = data.nasaData.explanation;
   photoOfTheDay.src = data.nasaData.hdurl;
   potdHref.setAttribute("href", data.nasaData.hdurl);
@@ -32,7 +32,7 @@ const getPotd = async () => {
   const potdPath = "/potd";
   const potdData = await fetchDataFromApi(potdPath);
   setPhotoOfTheDay(potdData);
-};
+}; */
 /*  */
 
 // click rover button to choose rover, then fetch info like number of sol availible for choosen rover
@@ -109,7 +109,7 @@ const setRoverData = (data) => {
   });
 };
 
-getPotd();
+//getPotd();
 
 curiosityBtn.addEventListener("click", () => {
   selectRoverData("curiosity");
