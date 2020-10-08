@@ -5,7 +5,7 @@ const photoOfTheDayRouter = require('./routes/potd')
 
 
 const app = express()
-const port = 8080
+const port = process.env.PORT || 8080
 
 const dotenv = require('dotenv').config()
 const path = require('path')
