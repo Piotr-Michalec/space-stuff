@@ -307,8 +307,20 @@ img {
   height: 5vh;
   padding: 0;
 }
+.about-container{
+  position: relative;
+  margin: auto;
+height: 100vh;
+  width: 80%;
+}
 
-
+.about-footer{
+  position: absolute;
+  bottom: 0;
+  color: #ffffff;
+  height: 5vh;
+  padding: 0;
+}
 
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {

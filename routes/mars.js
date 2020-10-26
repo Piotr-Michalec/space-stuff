@@ -12,7 +12,7 @@ const urlBuilder = async (roverName, sol) => {
 
 const getRoverDetails = async (rover) => {
   //change name
-  //get number of sol availible and chose one
+  //get number of sol availible and choose one
   const manifestUrl = `https://api.nasa.gov/mars-photos/api/v1/manifests/${rover}/?api_key=${NASA_API_KEY}`;
   let maxSol = await FetchDataFromApi(manifestUrl);
   return maxSol.photo_manifest.max_sol;

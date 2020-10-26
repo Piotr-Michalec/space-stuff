@@ -53,12 +53,9 @@ let selectBtn = document.querySelector(".button");
 
 const selectRoverData = async (rover) => {
   let maxSol = await getRoverInfo(rover);
-  
   //set max sol to the slider
   slider.max = maxSol.roverInfo;
   slider.value = 1000;
-
-  
   let sol = 1000;
   let solVal = document.querySelector("#sol-value");
   let solMax = document.querySelector("#sol-max-value");
@@ -66,14 +63,14 @@ const selectRoverData = async (rover) => {
   solMax.innerHTML = slider.max;
   solVal.innerHTML = slider.value;
   roverName.innerHTML = rover
-
   slider.oninput = () => {
     solVal.innerHTML = ("Sol: ", slider.value);
     sol = slider.value;
   };
-
+  getRoverData(rover,1000)
   selectBtn.addEventListener("click", () => getRoverData(rover, sol));
 };
+
 //get photos from rovers
 const getRoverData = async (rover, sol) => {
   let roverPath = `/mars/?sol=${sol}&rover=${rover}`;
