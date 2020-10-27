@@ -27,6 +27,12 @@ body {
   padding:0;
 }
 
+.navbar > a{
+  color: #ffffff;
+  padding:0;
+ 
+}
+
 #overlay {
   position: fixed;
   width: 100vw;
@@ -307,11 +313,21 @@ img {
   height: 5vh;
   padding: 0;
 }
+
+
 .about-container{
   position: relative;
   margin: auto;
 height: 100vh;
   width: 80%;
+  color: #ffffff;
+  font-family: d-din-regular;
+  
+}
+
+.about-container a{
+  color: #ffffff;
+  font-size: x-large;
 }
 
 .about-footer{
@@ -320,6 +336,14 @@ height: 100vh;
   color: #ffffff;
   height: 5vh;
   padding: 0;
+}
+
+.about-text{
+  color:#ffffff;
+  background-color:  rgba(38, 7, 7, 0.64);
+  height: 90vh;
+  text-align: center;
+  padding:10vw;
 }
 
 /* Extra small devices (phones, 600px and down) */
