@@ -73,10 +73,15 @@ const selectRoverData = async (rover) => {
 
 //get photos from rovers
 const getRoverData = async (rover, sol) => {
+  console.log('start loadnig')
+  document.querySelector(".preloader-wrapper").style.display = 'block';
   let roverPath = `/mars/?sol=${sol}&rover=${rover}`;
   const roverData = await fetchDataFromApi(roverPath);
+ 
   console.log("rover data", roverData);
   setRoverData(roverData);
+  console.log('finish loading')
+  document.querySelector(".preloader-wrapper").style.display = 'none';
 };
 
 //create photo gallery
